@@ -1,0 +1,170 @@
+/* LoginPage.css */
+
+/* Keyframes for animations */
+@keyframes pulse {
+    0% { transform: scale(1); }
+    100% { transform: scale(1.2); }
+  }
+  
+  @keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+  }
+  
+  @keyframes neonGlow {
+    0% { box-shadow: 0 0 5px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ffcc; }
+    100% { box-shadow: 0 0 10px #ff00de, 0 0 30px #ff00de, 0 0 50px #ff00de; }
+  }
+  
+  /* Base container styling */
+  .min-h-screen {
+    background: linear-gradient(135deg, #0d001a, #1a0033, #2a004d);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* Cosmic background effects */
+  .min-h-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 800"><g opacity="0.1"><circle fill="#00ffcc" cx="400" cy="400" r="200"/><circle fill="#ff00de" cx="600" cy="200" r="150"/><circle fill="#cc00ff" cx="200" cy="600" r="100"/></g></svg>');
+    animation: pulse 10s infinite alternate;
+  }
+  
+  /* Login card styling */
+  .relative.w-full.max-w-md {
+    background: rgba(20, 0, 40, 0.7);
+    border: 1px solid rgba(0, 255, 204, 0.3);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 30px rgba(0, 255, 204, 0.2);
+    transition: all 0.3s ease;
+  }
+  
+  .relative.w-full.max-w-md:hover {
+    box-shadow: 0 0 50px rgba(255, 0, 222, 0.3);
+    transform: translateY(-5px);
+  }
+  
+  /* Floating particles */
+  .absolute.inset-0 .bg-blue-500 {
+    animation: float 4s infinite ease-in-out;
+    transition: all 0.3s ease;
+  }
+  
+  .absolute.inset-0 .bg-blue-500:hover {
+    background: #ff00de;
+  }
+  
+  /* Header styling */
+  .w-16.h-16 {
+    background: linear-gradient(45deg, #00ffcc, #ff00de);
+    animation: neonGlow 2s infinite alternate;
+  }
+  
+  .text-3xl {
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 10px rgba(0, 255, 204, 0.7);
+  }
+  
+  /* Input fields */
+  input {
+    background: rgba(20, 0, 40, 0.8) !important;
+    border: 1px solid #00ffcc !important;
+    color: #fff !important;
+    transition: all 0.3s ease;
+  }
+  
+  input:focus {
+    box-shadow: 0 0 15px rgba(0, 255, 204, 0.5) !important;
+    border-color: #ff00de !important;
+  }
+  
+  input::placeholder {
+    color: rgba(0, 255, 204, 0.5) !important;
+  }
+  
+  /* Icons */
+  .text-blue-400 {
+    color: #00ffcc !important;
+    transition: all 0.3s ease;
+  }
+  
+  .text-blue-400:hover {
+    color: #ff00de !important;
+    transform: scale(1.1);
+  }
+  
+  /* Submit button */
+  button[type="submit"] {
+    background: linear-gradient(90deg, #00ffcc, #ff00de) !important;
+    font-family: 'Orbitron', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    border: none !important;
+    box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+    transition: all 0.3s ease;
+  }
+  
+  button[type="submit"]:hover {
+    background: linear-gradient(90deg, #ff00de, #cc00ff) !important;
+    box-shadow: 0 0 30px rgba(255, 0, 222, 0.7);
+    transform: translateY(-3px) scale(1.02);
+  }
+  
+  button[type="submit"]:disabled {
+    background: linear-gradient(90deg, #666, #333) !important;
+    box-shadow: none !important;
+  }
+  
+  /* Social buttons */
+  .bg-gray-800.rounded-full {
+    background: rgba(20, 0, 40, 0.9) !important;
+    border: 1px solid #00ffcc;
+    transition: all 0.3s ease;
+  }
+  
+  .bg-gray-800.rounded-full:hover {
+    background: rgba(40, 0, 80, 0.9) !important;
+    border-color: #ff00de;
+    /* transform: rotate(360deg) scale(1.1); */
+    box-shadow: 0 0 15px rgba(255, 0, 222, 0.5);
+  }
+  
+  /* Links */
+  .text-blue-400 {
+    color: #00ffcc !important;
+    text-shadow: 0 0 5px rgba(0, 255, 204, 0.5);
+  }
+  
+  .text-blue-400:hover {
+    color: #ff00de !important;
+    text-shadow: 0 0 10px rgba(255, 0, 222, 0.7);
+  }
+  
+  /* Divider */
+  .border-gray-700 {
+    border-color: rgba(0, 255, 204, 0.2) !important;
+  }
+  
+  .text-gray-400 {
+    color: rgba(0, 255, 204, 0.7) !important;
+    background: rgba(20, 0, 40, 0.8) !important;
+  }
+  
+  /* Additional cosmic effects */
+  .relative.w-full.max-w-md::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0, 255, 204, 0.1) 0%, transparent 70%);
+    animation: pulse 15s infinite;
+    pointer-events: none;
+  }

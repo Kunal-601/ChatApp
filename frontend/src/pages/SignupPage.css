@@ -1,0 +1,125 @@
+/* SignupPage.css - Minimal Version */
+.signup-container {
+    min-height: 100vh;
+    background: #f0f2f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-container {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .form-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-title {
+    font-size: 1.5rem;
+    color: #1a1a1a;
+    margin-bottom: 0.5rem;
+  }
+  
+  .form-subtitle {
+    color: #666;
+    font-size: 0.9rem;
+  }
+  
+  .avatar-upload {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #e9ecef;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .avatar-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  
+  .avatar-upload:hover .avatar-overlay {
+    opacity: 1;
+  }
+  
+  .input-group {
+    margin-bottom: 1rem;
+  }
+  
+  .input-label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-size: 0.9rem;
+  }
+  
+  .input-field {
+    width: 100%;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  .input-field:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+  }
+  
+  .submit-btn {
+    width: 100%;
+    padding: 0.8rem;
+    background: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .submit-btn:hover {
+    background: #0056b3;
+  }
+  
+  .login-link {
+    text-align: center;
+    margin-top: 1rem;
+    color: #666;
+  }
+  
+  .login-link a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .login-link a:hover {
+    text-decoration: underline;
+  }
+  
+  .loader {
+    animation: spin 1s linear infinite;
+  }
+  
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
