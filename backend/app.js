@@ -7,10 +7,28 @@ import messageRouter from "./routes/message.route.js";
 app.use(express.json());
 
 //middlewares
-app.use(cors({
-  origin: process.env.FRONTEND_URL || "http://localhost:5173",
-  credentials: true
-}));
+// Configure CORS
+const allowedOrigins = [
+  'http://localhost:5173', // Local development
+  'https://chatapp-roan-mu.vercel.app', // Deployed frontend
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      // Allow requests with no origin (e.g., mobile apps or curl requests)
+      if (!origin) return callback(null, true);
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      } else {
+        return callback(new Error('Not allowed by CORS'));
+      }
+    },
+    credentials: true, // If you're using cookies (e.g., for JWT in HTTP-only cookies)
+    methods: ['GET', 'POST', 'PATCH', 'DELETE'], // Allowed HTTP methods
+    allowedHeaders: ['Content-Type', 'Authorization'], // Allowed headers
+  })
+);
 
 app.use(express.urlencoded({ extended: true }));
 

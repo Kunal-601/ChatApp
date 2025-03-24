@@ -1,0 +1,22 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "This is a full-stack chat application with real-time messaging capabilities. The project consists of a React frontend (using Vite) and a Node.js/Express backend, with MongoDB for data storage, Cloudinary for file uploads, and Socket.io for real-time communication.",
+  "main": "index.js",
+  "scripts": {
+    "build": "",
+    "start": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Kunal-601/ChatApp.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/Kunal-601/ChatApp/issues"
+  },
+  "homepage": "https://github.com/Kunal-601/ChatApp#readme"
+}
