@@ -5,7 +5,7 @@ import axios from 'axios';
 import { FaEnvelope, FaLock, FaSignInAlt, FaFingerprint } from 'react-icons/fa';
 import './LoginPage.css'
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL ? `${import.meta.env.VITE_BACKEND_URL}/api` : 'http://localhost:5000/api';
+const BASE_URL = import.meta.env.RENDER_BACKEND_URL ? `${import.meta.env.RENDER_BACKEND_URL}/api` : 'http://localhost:5000/api';
 
 const Login = () => {
   const [email, setEmail] = useState('');
