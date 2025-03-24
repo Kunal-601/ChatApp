@@ -4,7 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL ? `${import.meta.env.VITE_BACKEND_URL}/api` : 'http://localhost:5000/api';
+const BASE_URL = import.meta.env.RENDER_BACKEND_URL ? `${import.meta.env.RENDER_BACKEND_URL}/api` : 'http://localhost:5000/api';
 
 const Sidebar = ({ onUserSelect, selectedUserId }) => {
   const [users, setUsers] = useState([]);

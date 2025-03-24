@@ -4,7 +4,7 @@ import socket from '../utils/socket';
 import { FaPaperclip, FaPaperPlane } from 'react-icons/fa';
 // import './Chat.css';
 
-const BASE_URL = import.meta.env.VITE_BACKEND_URL ? `${import.meta.env.VITE_BACKEND_URL}/api` : 'http://localhost:5000/api';
+const BASE_URL = import.meta.env.RENDER_BACKEND_URL ? `${import.meta.env.RENDER_BACKEND_URL}/api` : 'http://localhost:5000/api';
 
 const Chat = ({ selectedUser }) => {
   const [messages, setMessages] = useState([]);

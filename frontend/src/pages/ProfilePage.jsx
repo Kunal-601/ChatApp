@@ -171,7 +171,7 @@ const ProfilePage = () => {
     try {
       const token = localStorage.getItem('token');
       const response = await axios.patch(
-        'http://localhost:5000/api/auth/update',
+        `${import.meta.env.RENDER_BACKEND_URL}/api/auth/update`,
         { status },
         {
           headers: {
@@ -210,7 +210,7 @@ const ProfilePage = () => {
       formData.append('avatar', avatar);
 
       const response = await axios.post(
-        'http://localhost:5000/api/auth/update',
+        `${import.meta.env.RENDER_BACKEND_URL}/api/auth/update`,
         formData,
         {
           headers: {
@@ -239,7 +239,7 @@ const ProfilePage = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        'http://localhost:5000/api/auth/logout',
+        `${import.meta.env.RENDER_BACKEND_URL}/api/auth/logout`,
         {},
         {
           headers: {
