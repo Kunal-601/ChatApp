@@ -6,7 +6,7 @@ import { FaEnvelope, FaLock, FaUser, FaUserPlus, FaImage } from 'react-icons/fa'
 import { motion } from 'framer-motion';
 import './SignupPage.css';
 
-const BASE_URL = import.meta.env.RENDER_BACKEND_URL ? `${import.meta.env.RENDER_BACKEND_URL}/api` : 'http://localhost:5000/api';
+const BASE_URL = import.meta.env.VITE_RENDER_BACKEND_URL ? `${import.meta.env.VITE_RENDER_BACKEND_URL}/api` : 'http://localhost:5000/api';
 
 const Signup = () => {
   const [formData, setFormData] = useState({

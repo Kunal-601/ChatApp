@@ -5,8 +5,8 @@ import axios from 'axios';
 import { FaEnvelope, FaLock, FaSignInAlt, FaFingerprint } from 'react-icons/fa';
 import './LoginPage.css'
 
-const BASE_URL = import.meta.env.RENDER_BACKEND_URL ? `${import.meta.env.RENDER_BACKEND_URL}/api` : 'http://localhost:5000/api';
-
+const BASE_URL = import.meta.env.VITE_RENDER_BACKEND_URL;
+console.log(BASE_URL);
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -21,7 +21,7 @@ const Login = () => {
     const loadingToast = toast.loading('Logging in...');
 
     try {
-      const response = await axios.post(`${BASE_URL}/auth/login`, { email, password });
+      const response = await axios.post(`${BASE_URL}/api/auth/login`, { email, password });
       if (response.data.success) {
         const { user, token } = response.data;
         localStorage.setItem('user', JSON.stringify(user));

@@ -170,8 +170,8 @@ const ProfilePage = () => {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await axios.patch(
-        `${import.meta.env.RENDER_BACKEND_URL}/api/auth/update`,
+      const response = await axios.post(
+        `${import.meta.env.VITE_RENDER_BACKEND_URL}/api/auth/update`,
         { status },
         {
           headers: {
@@ -210,7 +210,7 @@ const ProfilePage = () => {
       formData.append('avatar', avatar);
 
       const response = await axios.post(
-        `${import.meta.env.RENDER_BACKEND_URL}/api/auth/update`,
+        `${import.meta.env.VITE_RENDER_BACKEND_URL}/api/auth/update`,
         formData,
         {
           headers: {
@@ -228,6 +228,7 @@ const ProfilePage = () => {
       alert('Avatar updated successfully!');
     } catch (err) {
       console.error('Error uploading avatar:', err);
+      console.log('Server Response:', err.response?.data);
       setError('Failed to upload avatar');
     } finally {
       setLoading(false);
@@ -239,7 +240,7 @@ const ProfilePage = () => {
     try {
       const token = localStorage.getItem('token');
       await axios.post(
-        `${import.meta.env.RENDER_BACKEND_URL}/api/auth/logout`,
+        `${import.meta.env.VITE_RENDER_BACKEND_URL}/api/auth/logout`,
         {},
         {
           headers: {
