@@ -1,6 +1,6 @@
 import connectDB from "./db/index.js";
 import dotenv from "dotenv";
-import {app} from "./app.js";
+import {server} from "./utils/socket.js";
 import cloudinary from "cloudinary";
 
 dotenv.config({path: "./.env"});
@@ -22,7 +22,7 @@ const PORT = process.env.PORT || 8000;
 
 connectDB()
 .then(() => {
-    app.listen(PORT, () => {
+    server.listen(PORT, () => {
         console.log(`Server is running on port ${PORT}`);
     })
 })

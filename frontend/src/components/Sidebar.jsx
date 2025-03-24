@@ -4,7 +4,7 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { Link, useNavigate } from 'react-router-dom';
 
-const BASE_URL = 'http://localhost:5000/api';
+const BASE_URL = import.meta.env.VITE_BACKEND_URL ? `${import.meta.env.VITE_BACKEND_URL}/api` : 'http://localhost:5000/api';
 
 const Sidebar = ({ onUserSelect, selectedUserId }) => {
   const [users, setUsers] = useState([]);
@@ -62,11 +62,13 @@ const Sidebar = ({ onUserSelect, selectedUserId }) => {
         <div className="flex items-center space-x-3">
           <div className="w-10 h-10 rounded-full overflow-hidden border border-gray-600 border-opacity-40 shadow-inner bg-gradient-to-br from-gray-800 to-gray-700">
             {user?.avatar ? (
-              <img
-                src={user.avatar}
-                alt={user.username}
-                className="w-full h-full object-cover"
-              />
+              <Link to="/profile">
+                <img
+                  src={user.avatar}
+                  alt={user.username}
+                  className="w-full h-full object-cover"
+                />
+              </Link>
             ) : (
               <div className="w-full h-full flex items-center justify-center">
                 <FaUser className="text-gray-400 text-lg" />
@@ -74,7 +76,7 @@ const Sidebar = ({ onUserSelect, selectedUserId }) => {
             )}
           </div>
           <h2 className="text-xl font-medium bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 to-purple-400 tracking-tight">
-            <Link to="/home">{user?.username || 'ChatApp'}</Link>
+            <Link to="/profile">{user?.username || 'ChatApp'}</Link>
           </h2>
         </div>
         <div className="flex items-center space-x-1">

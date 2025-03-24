@@ -180,13 +180,19 @@ export const logoutUser = (req, res) => {
 //update user
 export const updateUser = async (req, res) => {
     try{
-        const status = req.body.status;
+        const {status} = req.body;
         const userId = req.user._id; //comes from the verifyJWT middleware
-        const picLocalPath = req.file?.path;
-        const picCloudinaryUrl = "";
-        if(picLocalPath)
+        // const picLocalPath = req.file?.path;
+        // console.log("Reqyest Body", req.body);
+        // console.log("Reqyest file", req.file);
+        const updateData = {};
+        if (status) {
+            updateData.status = status;
+        }
+        let picCloudinaryUrl;
+        if(req.file)
         {
-            const cloudinaryResponse = await uploadOnCloudinary(picLocalPath);   
+            const cloudinaryResponse = await uploadOnCloudinary(req.file.path);   
             if(!cloudinaryResponse)
             {
                 return res
@@ -197,21 +203,48 @@ export const updateUser = async (req, res) => {
                 })
             }
             picCloudinaryUrl = cloudinaryResponse.url;
+            updateData.avatar = picCloudinaryUrl
         }
+        if(Object.keys(updateData).length == 0)
+        {
+            return res
+            .status(400)
+            .json({
+                success: false,
+                message: "No updates done"
+            })
+        }
+        // console.log("Update Data", updateData)
         const updatedUser = await User.findByIdAndUpdate(userId,
             {
-                status: status,
-                avatar: picCloudinaryUrl || req.user.avatar
+                $set: updateData
             },
-            {new: true}
+            {new: true, select: "-password"}
         )
+
+        if(!updatedUser)
+        {
+            return res
+            .status(404)
+            .json({
+                success: false,
+                message: "User not found"
+            })
+        }
+        // console.log('Updated User:', updatedUser);
 
         return res
         .status(200)
         .json({
             success: true,
             message: "User updated successfully",
-            user: updatedUser
+            user: {
+                id: updatedUser._id,
+                username: updatedUser.username,
+                email: updatedUser.email,
+                avatar: updatedUser.avatar,
+                status: updatedUser.status
+            }
         })
     
     }catch(error){

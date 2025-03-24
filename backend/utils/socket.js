@@ -1,15 +1,14 @@
-import express from "express";
 import http from "http";
 import { Server } from "socket.io";
+import { app } from "../app.js";
 
-
-const app = express();
 const server = http.createServer(app);
 
 //initialize the socket server
 const io = new Server(server, {
     cors:{
-        origin: "*"
+        origin: process.env.FRONTEND_URL || "*",
+        credentials: true
     }
 })
 
